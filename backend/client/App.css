@@ -1,0 +1,232 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    min-height: 8vh;
+    position:fixed;
+    width: 100%;
+    align-items: center;
+    background-color: #1c40617c;
+
+}
+.navlinks{
+    display:flex;
+    list-style:none;
+    margin-left: 500px;
+    justify-content: space-around ;
+    width: 50%;
+    font-size:18px;
+    
+}
+.logo{
+  display: flex;
+  color:rgb(255, 255, 255, 0.85);
+  font-size:28px;
+}
+.logo h4{
+    margin-left: 7px;
+    letter-spacing: 1px;
+}
+.link{
+    text-decoration: none;
+    letter-spacing:3px;
+    font-weight: bold;
+    color:rgb(255, 255, 255, 0.85);
+    
+}
+.link a{
+    color:rgb(255, 255, 255, 0.85);
+}
+.link a:hover{
+    color:rgb(255, 255, 255, 1);
+}
+.hamburger-toggle{
+    cursor: pointer;
+    color:white;
+    display: none;
+}
+.main{
+    background: radial-gradient(at center center, #2d7e9270 0%, #1c40617c 100%), url("./assets/dooh.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    max-width: 100%;
+ 
+}
+
+.showcase{
+    max-width: 800px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.showcase h1{
+    font-size: 64px;
+    color:white;
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+.showcase h2{
+  font-size: 28px;
+  color:white;
+  font-weight: lighter;
+  letter-spacing: 4px;
+}
+.showcase p{
+  color:white;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+.showcase__btn-services{
+  border: white solid 2px;
+  background-color: transparent;
+  color: white;
+  padding: 10px 50px;
+  margin: 0 10px;
+}
+.showcase__btn-about{
+  border: white solid 2px;
+  background-color: transparent;
+  color: white;
+  padding: 10px 50px;
+  margin: 0 10px;
+}
+
+.main-footer{
+
+    background: radial-gradient(at center center, #1c40617c, #1c40617c);
+    padding-top:1em;
+    color:white;
+    font-size:14px;
+    width:100%;
+
+  
+}
+.page-container{
+    display:flex;
+    flex-direction: column;
+    min-height:100vh;
+
+}.content-wrap{
+    flex:1;
+}
+
+
+@media screen and (max-width: 860px) {
+    body{
+        
+        overflow-x: scroll;
+    }
+    .hamburger-toggle{
+      
+        display: block;
+    }
+    .navlinks{
+        position: absolute;
+        right: 0px;
+        display: flex;
+        flex-direction: column;
+        height: 92vh;
+        align-items: center;
+        width: 100%;
+        top: 8vh;
+        background-color: indigo;
+        font-size: 32px;
+        transform: translateX(100%) ;
+        transition: transform 0.2s ease-in;
+    }
+    .active{
+        transform: translateX(0%);
+    }
+   
+  }
+
+
+  .section-top{
+      padding-top: 100px;
+
+      background-color: #1c40614c;
+  }
+
+  .title{
+    font-family: 'Cormorant Unicase', serif;
+    text-align:center;
+    color: #2d7e9270;
+}
+
+/* content and sidebar */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300&family=Roboto:ital@1&display=swap'); 
+  .outer-container{
+    padding-top: 45px; 
+    display: flex;
+    height:auto;
+    /* text-wrap:wrap; */
+    
+  }
+   .content{
+    display: flex;
+    flex-direction:column;
+    width: 75%;
+    padding:0 20px;
+    
+  }
+  
+  .title{
+    font-family: 'Cormorant Unicase', serif;
+    text-align:center;
+    color:#2d7e9270;
+  }
+  .sidebar{
+    display: flex;
+    width:25%;
+    flex-direction:column;
+  }
+
+
+  /* Contact form*/
+/* 
+  .contact-form{
+      transition: all 4s ease-in-out;
+      align-items: center;
+      padding-left:170px;
+      
+  }
+  .form-control{
+      width:600px;
+      background:transparent;
+      border: none;
+      outline: none;
+      border: 1px solid gray;
+      color:white;
+      font-size: 18px;
+      margin-bottom: 16px;
+
+  }
+  input{
+      height:45px;
+  }
+  form .submit{
+      background-color: ivory;
+      background:transparent;
+      color:white;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      height: 50px;
+      margin-top: 20px;
+  } */
