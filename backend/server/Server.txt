@@ -1,1 +1,3 @@
 Contains the file that connects the backend to database.
+To run the server you must first 'npm init' then 'npm i express pg cors' onto the server folder.
+After that is done you can run run the front end aplication. (database server needs to be active)
