@@ -12,6 +12,7 @@ import Dashboard from "./Dashboard";
 import ReactDOM from "react-dom";
 
 
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -34,12 +35,45 @@ const useStyles = makeStyles((theme) => ({
 function Log_in() {
   const classes = useStyles();
 
-  function getUser(){
-    fetch('http://localhost:3001/')
-        .then(response => {
-          return response.text();
-        })
+
+
+  async function getUser() {
+
+
+
+    const response = await fetch("http://localhost:3001/");
+    const json = await response.json();
+    console.log(json)
+
+
+    const username = json[0].username
+    const password = json[0].password
+
+    
+    //console.log(username)
+    //console.log(password)
+
+    let USR = document.forms["signInForm"]["email"].value;
+    let PWD = document.forms["signInForm"]["password"].value;
+
+    //if user and password inputted matches a db record then display dash (not finished)
+    if(USR === username && PWD === password)
+    {
+
+        dash()
+
+    }
   }
+
+
+
+
+
+
+
+
+
+
 
   return (
       <Container component="main" maxWidth="xs">
@@ -49,7 +83,7 @@ function Log_in() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} name={"signInForm"} onSubmit={Validate} method={"post"}>
+          <form className={classes.form} name={"signInForm"} onClick={getUser}>
             <TextField
                 variant="outlined"
                 margin="normal"
@@ -97,33 +131,21 @@ function Log_in() {
   );
 }
 
+function dash(){
+
+  ReactDOM.render(
+      <React.StrictMode>
+        <Dashboard />
+      </React.StrictMode>,
+      document.getElementById('root')
 
 
-
-function Validate()
-{
-
-
-  let EML = document.forms["signInForm"]["email"].value;
-  let PWD = document.forms["signInForm"]["password"].value;
-
-  if(EML === "admin" && PWD === "admin")
-  {
-    ReactDOM.render(
-        <React.StrictMode>
-          <Dashboard />
-        </React.StrictMode>,
-        document.getElementById('root')
-
-
-    );
-
-
-  }
-
-
+  );
 
 }
+
+
+
 
 
 
