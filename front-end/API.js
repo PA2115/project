@@ -17,7 +17,7 @@ app.use(cors())
 app.use(express.json())
 
 
-
+//this will eventually be needed to change. Currently only returns admin account (just for testing)
 app.get("/", async (req, res) =>{
     try{
         const x = await pool.query('SELECT * FROM user_login WHERE uid = 1');
