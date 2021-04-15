@@ -1,0 +1,52 @@
+CREATE TABLE offer(
+	offer_id SERIAL PRIMARY KEY,
+	offer_name VARCHAR(255), 
+	offer_expiry TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	offer_type VARCHAR(255),
+	offer_category VARCHAR(255),
+	offer_action VARCHAR(255)
+);
+CREATE TABLE merchant(
+	merchant_id SERIAL PRIMARY KEY,
+	merchant_name VARCHAR(255),
+	merchant_category VARCHAR(255),
+	merchant_state VARCHAR(255),
+	merchant_city VARCHAR(255),
+	merchant_address VARCHAR(255),
+	merchant_postcode VARCHAR(255),
+	merchant_phone VARCHAR(255),
+	o_id INT REFERENCES offer (offer_id)
+);
+CREATE TABLE business(
+	business_id SERIAL PRIMARY KEY,
+	business_name VARCHAR(255),
+	business_phone VARCHAR(255), 
+	business_address VARCHAR(255),
+	o_id INT REFERENCES offer (offer_id)
+);
+//login purposes
+CREATE TABLE users(
+  	user_id UUID DEFAULT uuid_generate_v4(),
+  	user_name VARCHAR(255) NOT NULL,
+  	user_email VARCHAR(255) NOT NULL UNIQUE,
+  	user_password VARCHAR(255) NOT NULL,
+  	PRIMARY KEY (user_id)
+);
+//keeps track of what's being sent 
+CREATE TABLE shared_users (
+	shared_id SERIAL PRIMARY KEY,
+ 	shared_to_email VARCHAR(255) NOT NULL ,
+ 	shared_referral_code VARCHAR(255) NOT NULL ,
+ 	shared_time_added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ 	email VARCHAR(255) REFERENCES users (user_email)
+
+);
+
+CREATE TABLE transactions(
+	transaction_id SERIAL PRIMARY KEY,
+	transaction_number INT,
+	transaction_cost NUMERIC(10,2),
+	transaction_tax NUMERIC(10,2),
+	transaction_fee NUMERIC(10,2),
+	transaction_amount NUMERIC(10,2)
+);
