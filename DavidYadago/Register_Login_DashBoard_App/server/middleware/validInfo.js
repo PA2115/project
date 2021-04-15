@@ -1,16 +1,6 @@
-module.exports = (req, res, next) => {
+module.exports = function (req, res, next) {
   //grab the inputed form fields from server req.body.
-  const {
-    businessname,
-    email,
-    password,
-    businessno,
-    phone,
-    state,
-    city,
-    address,
-    postcode,
-  } = req.body;
+  const { email, name, password } = req.body;
 
   //email validation func with regex pattern to check if inputed email field matches
   function validEmail(userEmail) {
@@ -23,22 +13,11 @@ module.exports = (req, res, next) => {
     error.
     */
   if (req.path === "/register") {
-    if (
-      ![
-        businessname,
-        email,
-        password,
-        businessno,
-        phone,
-        state,
-        city,
-        address,
-        postcode,
-      ].every(Boolean)
-    ) {
-      return res.status(401).json({ message: "Missing credentials" });
+    console.log(!email.length);
+    if (![email, name, password].every(Boolean)) {
+      return res.json("Missing Credentials");
     } else if (!validEmail(email)) {
-      return res.status(401).json({ message: "Invalid Email" });
+      return res.json("Invalid Email");
     }
 
     /* if the server req path is login page, a check against the server req body 
@@ -48,9 +27,9 @@ module.exports = (req, res, next) => {
     */
   } else if (req.path === "/login") {
     if (![email, password].every(Boolean)) {
-      return res.status(401).json({ message: "Missing credentials" });
+      return res.json("Missing Credentials");
     } else if (!validEmail(email)) {
-      return res.status(401).json({ message: "Invalid Email" });
+      return res.json("Invalid Email");
     }
   }
 

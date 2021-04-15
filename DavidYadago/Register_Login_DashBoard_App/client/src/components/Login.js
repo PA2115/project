@@ -18,13 +18,16 @@ const Login = ({ setAuth }) => {
     e.preventDefault();
     try {
       const body = { email, password };
-      const response = await fetch("http://localhost:5000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
+      const response = await fetch(
+        "http://localhost:5000/authentication/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
 
       const parseRes = await response.json();
 
@@ -34,7 +37,7 @@ const Login = ({ setAuth }) => {
         toast.success("Logged in Successfully");
       } else {
         setAuth(false);
-        toast.error(parseRes.message);
+        toast.error(parseRes);
       }
     } catch (err) {
       console.error(err.message);
@@ -49,6 +52,7 @@ const Login = ({ setAuth }) => {
           type="text"
           name="email"
           value={email}
+          placeholder="Email"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
         />
@@ -56,10 +60,11 @@ const Login = ({ setAuth }) => {
           type="password"
           name="password"
           value={password}
+          placeholder="Password"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
         />
-        <button class="btn btn-success btn-block">Submit</button>
+        <button className="btn btn-success btn-block">Log In</button>
       </form>
       <Link to="/register">register</Link>
     </Fragment>

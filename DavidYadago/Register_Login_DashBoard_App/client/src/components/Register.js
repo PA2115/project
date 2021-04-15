@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 
 const Register = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
-    name: "",
     email: "",
     password: "",
+    name: "",
     businessno: "",
     businessphone: "",
     businessstate: "",
@@ -16,9 +16,9 @@ const Register = ({ setAuth }) => {
   });
 
   const {
-    name,
     email,
     password,
+    name,
     businessno,
     businessphone,
     businessstate,
@@ -34,9 +34,9 @@ const Register = ({ setAuth }) => {
     e.preventDefault();
     try {
       const body = {
-        name,
         email,
         password,
+        name,
         businessno,
         businessphone,
         businessstate,
@@ -44,13 +44,16 @@ const Register = ({ setAuth }) => {
         businessaddress,
         businesspostcode,
       };
-      const response = await fetch("http://localhost:5000/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
+      const response = await fetch(
+        "http://localhost:5000/authentication/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
       const parseRes = await response.json();
 
       if (parseRes.jwtToken) {
@@ -72,17 +75,9 @@ const Register = ({ setAuth }) => {
       <form onSubmit={onSubmitForm}>
         <input
           type="text"
-          name="name"
-          value={name}
-          placeholder="name"
-          onChange={(e) => onChange(e)}
-          className="form-control my-3"
-        />
-        <input
-          type="text"
           name="email"
           value={email}
-          placeholder="email"
+          placeholder="Email"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
         />
@@ -90,7 +85,15 @@ const Register = ({ setAuth }) => {
           type="password"
           name="password"
           value={password}
-          placeholder="password"
+          placeholder="Password"
+          onChange={(e) => onChange(e)}
+          className="form-control my-3"
+        />
+        <input
+          type="text"
+          name="name"
+          value={name}
+          placeholder="Business Name"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
         />
@@ -106,7 +109,7 @@ const Register = ({ setAuth }) => {
           type="number"
           name="businessphone"
           value={businessphone}
-          placeholder="business Phone"
+          placeholder="Business Phone"
           onChange={(e) => onChange(e)}
           className="form-control my-3"
         />
@@ -142,7 +145,7 @@ const Register = ({ setAuth }) => {
           onChange={(e) => onChange(e)}
           className="form-control my-3"
         />
-        <button className="btn btn-success btn-block">Submit</button>
+        <button className="btn btn-success btn-block">Sign Up</button>
       </form>
       <Link to="/login">login</Link>
     </Fragment>

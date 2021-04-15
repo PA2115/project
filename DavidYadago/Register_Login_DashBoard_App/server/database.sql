@@ -1,17 +1,19 @@
+--Name of BMG Database
 CREATE DATABASE bmg;
 
+--Table for storing users registered
 CREATE TABLE member(
     member_id SERIAL PRIMARY KEY,
     member_email VARCHAR(255) NOT NULL,
     member_password VARCHAR(255) NOT NULL,
     business_name VARCHAR(255) NOT NULL,
-    business_no INT NOT NULL,
+    business_no BIGINT NOT NULL,
     business_phone INT NOT NULL,
     business_state VARCHAR(255) NOT NULL,
     business_city VARCHAR(255) NOT NULL,
     business_address VARCHAR(255) NOT NULL,
     business_postcode INT NOT NULL,
-    member_level INT NOT NULL
+    member_level INT
 );
 
 --sample members inserted to member table:

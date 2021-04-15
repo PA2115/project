@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
+  Redirect
 } from "react-router-dom";
 
 import { toast } from "react-toastify";
@@ -21,9 +21,9 @@ toast.configure();
 function App() {
   const checkAuthenticated = async () => {
     try {
-      const res = await fetch("http://localhost:5000/auth/is-verify", {
-        method: "GET",
-        headers: { token: localStorage.token },
+      const res = await fetch("http://localhost:5000/authentication/verify", {
+        method: "POST",
+        headers: { jwt_token: localStorage.token }
       });
 
       const parseRes = await res.json();
@@ -40,7 +40,7 @@ function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const setAuth = (boolean) => {
+  const setAuth = boolean => {
     setIsAuthenticated(boolean);
   };
 
@@ -52,7 +52,7 @@ function App() {
             <Route
               exact
               path="/login"
-              render={(props) =>
+              render={props =>
                 !isAuthenticated ? (
                   <Login {...props} setAuth={setAuth} />
                 ) : (
@@ -63,7 +63,7 @@ function App() {
             <Route
               exact
               path="/register"
-              render={(props) =>
+              render={props =>
                 !isAuthenticated ? (
                   <Register {...props} setAuth={setAuth} />
                 ) : (
@@ -74,7 +74,7 @@ function App() {
             <Route
               exact
               path="/dashboard"
-              render={(props) =>
+              render={props =>
                 isAuthenticated ? (
                   <Dashboard {...props} setAuth={setAuth} />
                 ) : (

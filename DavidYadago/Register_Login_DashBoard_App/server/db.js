@@ -3,9 +3,9 @@ const Pool = require("pg").Pool;
 
 //create a new pool instance with db credentials for connecting
 const pool = new Pool({
+  host: "localhost",
   user: "postgres",
   password: "password",
-  host: "localhost",
   port: 5432,
   database: "bmg",
 });
