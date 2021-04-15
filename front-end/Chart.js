@@ -3,6 +3,7 @@ import { useTheme } from '@material-ui/core/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Title from './Title';
 
+
 // Generate Sales Data
 function createData(time, amount) {
     return { time, amount };
@@ -25,7 +26,7 @@ export default function Chart() {
 
     return (
         <React.Fragment>
-            <Title>Today</Title>
+            <Title>Overview - Offer Performance</Title>
             <ResponsiveContainer>
                 <LineChart
                     data={data}
