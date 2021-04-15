@@ -10,15 +10,16 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
+import DoughnutChart from "./PieChart";
+import OfferWallet from "./offerwallet";
+
 
 
 
@@ -93,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: theme.spacing(4),
     },
     paper: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
         display: 'flex',
         overflow: 'auto',
         flexDirection: 'column',
@@ -102,6 +103,8 @@ const useStyles = makeStyles((theme) => ({
         height: 240,
     },
 }));
+
+
 
 export default function Dashboard() {
     const classes = useStyles();
@@ -113,6 +116,9 @@ export default function Dashboard() {
         setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+
+
 
     return (
         <div className={classes.root}>
@@ -129,13 +135,9 @@ export default function Dashboard() {
                         <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Dashboard
+                        Mercury
                     </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <NotificationsIcon />
-                        </Badge>
-                    </IconButton>
+                    {/* Put BMG logo here?? */}
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -158,18 +160,34 @@ export default function Dashboard() {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
+                    <Grid container spacing={5}>
                         {/* Chart */}
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
                                 <Chart />
                             </Paper>
                         </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Paper className={fixedHeightPaper}>
+                                <DoughnutChart />
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Paper className={classes.paper}>
+                                <OfferWallet />
+                            </Paper>
+                        </Grid>
+
                     </Grid>
                     <Box pt={4}>
                     </Box>
                 </Container>
+
             </main>
         </div>
+
     );
+
+
 }
+
