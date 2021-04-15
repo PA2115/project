@@ -21,6 +21,10 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 import Chart from "./Chart";
+import DoughnutChart from "./PieChart";
+import OfferWallet from "./offerwallet";
+//import CustomCss from "./Dash.css";
+import "./Dash.css";
 
 const drawerWidth = 240;
 
@@ -208,6 +212,26 @@ const Dashboard = ({ setAuth }) => {
               Logout
             </button>
           </div>
+
+          <Grid container spacing={5}>
+            {/* Chart */}
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper className={fixedHeightPaper}>
+                <Chart />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper>
+                <DoughnutChart />
+              </Paper>
+            </Grid>
+            <Grid item xs={12}>
+              <Paper>
+                <OfferWallet />
+              </Paper>
+            </Grid>
+          </Grid>
+          <Box pt={4}></Box>
         </Container>
       </main>
     </div>

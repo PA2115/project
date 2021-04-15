@@ -32,7 +32,7 @@ export default function Chart() {
 
   return (
     <React.Fragment>
-      <Title>Today</Title>
+      <Title>Overview - Offer Performance</Title>
       <ResponsiveContainer>
         <LineChart
           data={data}

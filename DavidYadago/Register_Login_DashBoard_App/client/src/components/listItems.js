@@ -9,6 +9,9 @@ import PeopleIcon from "@material-ui/icons/People";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import LocalOfferIcon from "@material-ui/icons/LocalOffer";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 export const mainListItems = (
   <div>
