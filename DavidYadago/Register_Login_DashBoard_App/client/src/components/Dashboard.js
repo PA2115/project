@@ -23,6 +23,11 @@ import { mainListItems, secondaryListItems } from "./listItems";
 import Chart from "./Chart";
 import DoughnutChart from "./PieChart";
 import OfferWallet from "./offerwallet";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 //import CustomCss from "./Dash.css";
 import "./Dash.css";
 
@@ -201,7 +206,17 @@ const Dashboard = ({ setAuth }) => {
         <Divider />
         <List>{mainListItems}</List>
         <Divider />
-        <List>{secondaryListItems}</List>
+        <List>
+          {secondaryListItems}
+          <ListItem button>
+            <ListItemIcon>
+              <ExitToAppIcon />
+            </ListItemIcon>
+            <ListItemText>
+              <span onClick={(e) => logout(e)}>Log Out</span>
+            </ListItemText>
+          </ListItem>
+        </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
