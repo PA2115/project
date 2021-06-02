@@ -10,15 +10,20 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import Avatar from "@material-ui/core/Avatar";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems, secondaryListItems } from './listItems';
-import Chart from './Chart';
-import DoughnutChart from "./PieChart";
-import OfferWallet from "./offerwallet";
+import CPA, {OfferReach} from "./Chart";
+
+import LocDoughnutChart, {CatDoughnutChart} from "./PieChart";
+//import DistributedOffers from "./DistributedOffers";
+
+
+
 
 
 
@@ -30,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
     },
     toolbar: {
-        paddingRight: 24, // keep right padding when drawer closed
+        paddingRight: 25, // keep right padding when drawer closed
     },
     toolbarIcon: {
         display: 'flex',
@@ -55,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
         }),
     },
     menuButton: {
-        marginRight: 36,
+        marginRight: 35,
     },
     menuButtonHidden: {
         display: 'none',
@@ -92,6 +97,7 @@ const useStyles = makeStyles((theme) => ({
     container: {
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
+        marginLeft: 0,
     },
     paper: {
         padding: theme.spacing(1),
@@ -100,7 +106,19 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
     },
     fixedHeight: {
-        height: 240,
+        height: 260,
+    },
+    pieChart: {
+        width: 400,
+        height: 260,
+    },
+    what: {
+        width: 1360,
+        height: '100%',
+        padding: theme.spacing(1),
+        display: 'flex',
+        overflow: 'auto',
+        flexDirection: 'column',
     },
 }));
 
@@ -108,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -132,12 +150,11 @@ export default function Dashboard() {
                         onClick={handleDrawerOpen}
                         className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
                     >
-                        <MenuIcon />
+                        <img src={"/logo.png"} width={"30"} height={"30"}/>
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         Mercury
                     </Typography>
-                    {/* Put BMG logo here?? */}
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -164,23 +181,25 @@ export default function Dashboard() {
                         {/* Chart */}
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
-                                <Chart />
+                                <CPA />
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={4} lg={3}>
+                            <Paper className={classes.pieChart}>
+                                <LocDoughnutChart />
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
-                                <DoughnutChart />
+                                <OfferReach />
                             </Paper>
                         </Grid>
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper}>
-                                <OfferWallet />
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Paper className={classes.pieChart}>
+                                <CatDoughnutChart />
                             </Paper>
                         </Grid>
-
                     </Grid>
-                    <Box pt={4}>
-                    </Box>
                 </Container>
 
             </main>
