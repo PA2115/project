@@ -254,6 +254,30 @@ app.post('/sharedTransactions',  async (req, res) => {
 
 })
 
+//Create new transaction
+app.post('/newTransaction',  async (req, res) => {
+
+    const data = {
+
+        shared_action: req.body.shared_action,
+        offer_id: req.body.offer_id,
+        location_id: req.body.location_id,
+        merchant_id: req.body.merchant_id
+
+    }
+
+    const values = [data.shared_action, data.offer_id, data.location_id, data.merchant_id]
+
+    try{
+        const retrieved = await pool.query('INSERT INTO transaction (transaction_id, shared_action, offer_id, location_id, merchant_id) VALUES (NEXTVAL(\'transaction_transaction_id_seq1\'), $1, $2, $3, $4)', values)
+        console.log(res.json(retrieved.rows))
+
+    }catch (err){
+        console.error(err.message)
+    }
+
+})
+
 //get transactions that have been SHARED and calculate reach
 app.post('/sharedTransactions',  async (req, res) => {
 
