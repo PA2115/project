@@ -97,7 +97,7 @@ function OfferReach() {
 
     const chartData = [['Reach', 'Suburb', 'State']]
     for (let i = 0; i < results.length; i ++) {
-        chartData.push([results[i].suburb, results[i].reach, results[i].state])
+        chartData.push([results[i].location_region, results[i].location_state, results[i].reach])
     }
 
     return (
@@ -113,12 +113,12 @@ function OfferReach() {
                     title: 'Overall Reach',
                 },
             }}
-            chartWrapperParams={{ view: { columns: [0, 1] } }}
+            chartWrapperParams={{ view: { columns: [0, 2] } }}
             controls={[
                 {
                     controlType: 'CategoryFilter',
                     options: {
-                        filterColumnIndex: 2,
+                        filterColumnIndex: 1,
                         ui: {
                             //labelStacking: 'vertical',
                             label: 'Filter by State:',
