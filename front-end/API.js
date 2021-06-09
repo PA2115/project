@@ -241,18 +241,6 @@ app.post('/insertOffers',  async (req, res) => {
 
 })
 
-//get transactions that have been SHARED and calculate reach
-app.post('/sharedTransactions',  async (req, res) => {
-
-    try{
-        const retrieved = await pool.query('SELECT COUNT(shared_action) * 100 AS reach, location.suburb, location.state FROM transaction INNER JOIN location ON location.location_id = transaction.location_id WHERE shared_action=\'yes\' GROUP BY location.suburb, location.state;')
-        console.log(res.json(retrieved.rows))
-
-    }catch (err){
-        console.error(err.message)
-    }
-
-})
 
 //Create new transaction
 app.post('/newTransaction',  async (req, res) => {
