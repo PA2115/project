@@ -32,10 +32,10 @@ export default function CPA() {
         grab();
     }, []);
 
-    const chartData = [['offer name', 'cpa']]
+    const chartData = [['offer name', 'category', 'cpa']]
     for (let i = 0; i < params.length; i ++) {
 
-        chartData.push([params[i].offer_name, params[i].example_count])
+        chartData.push([params[i].offer_name,  params[i].industries_name, params[i].example_count])
     }
 
     return (
@@ -51,21 +51,21 @@ export default function CPA() {
                     title: 'Estimated CPA per offer',
                 },
             }}
-            chartWrapperParams={{ view: { columns: [0,1] } }}
-            // controls={[
-            //     {
-            //         controlType: 'CategoryFilter',
-            //         options: {
-            //             filterColumnIndex: 2,
-            //             ui: {
-            //                 labelStacking: 'vertical',
-            //                 label: 'Filter by State:',
-            //                 allowTyping: false,
-            //                 allowMultiple: false,
-            //             },
-            //         },
-            //     },
-            // ]}
+            chartWrapperParams={{ view: { columns: [0,2] } }}
+            controls={[
+                {
+                    controlType: 'CategoryFilter',
+                    options: {
+                        filterColumnIndex: 1,
+                        ui: {
+                            //labelStacking: 'vertical',
+                            label: 'Filter by Category:',
+                            allowTyping: false,
+                            allowMultiple: false,
+                        },
+                    },
+                },
+            ]}
         />
     );
 }
@@ -126,6 +126,7 @@ function OfferReach() {
                             allowMultiple: false,
                         },
                     },
+
                 },
             ]}
         />
