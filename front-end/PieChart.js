@@ -7,16 +7,16 @@ import Chart from "react-google-charts";
 
 
 
-// Doughnut
-function DoughnutChart() {
+// Doughnut by location
+export default function LocDoughnutChart() {
 
 
     return(
 
 
         <Chart
-            width={'300px'}
-            height={'300px'}
+            width={'400'}
+            height={'240px'}
             chartType="PieChart"
             loader={<div>Loading Chart</div>}
             data={[
@@ -37,6 +37,39 @@ function DoughnutChart() {
 
 
 }
+// Doughnut by category
+function CatDoughnutChart() {
 
 
-export default DoughnutChart;
+    return(
+
+
+        <Chart
+            width={'400'}
+            height={'240px'}
+            chartType="PieChart"
+            loader={<div>Loading Chart</div>}
+            data={[
+                ['Category', 'total redemption'],
+                ['food and beverage', 50],
+                ['cosmetics and health', 45],
+                ['Homewares', 15],
+            ]}
+            options={{
+                title: 'Best Performing Catergories',
+                pieHole: 0.3,
+            }}
+            rootProps={{ 'data-testid': '3' }}
+        />
+    );
+
+
+
+}
+
+export{
+
+    CatDoughnutChart,
+
+}
+
