@@ -143,7 +143,7 @@ function OfferReach() {
                         filterColumnIndex: 1,
                         ui: {
                             //labelStacking: 'vertical',
-                            label: 'Filter by State:',
+                            label: 'Filter by Category:',
                             allowTyping: false,
                             allowMultiple: false,
                         },
