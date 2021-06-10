@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
     },
     fixedHeight: {
-        height: 260,
+        height:400,
     },
     pieChart: {
         width: 400,
@@ -179,24 +179,24 @@ export default function Dashboard() {
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={5}>
                         {/* Chart */}
-                        <Grid item xs={12} md={8} lg={9}>
+                        <Grid item xs={30} md={6} lg={10}>
                             <Paper className={fixedHeightPaper}>
                                 <CPA />
                             </Paper>
                         </Grid>
-                        <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={classes.pieChart}>
-                                <LocDoughnutChart />
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={12} md={8} lg={9}>
+                        <Grid item xs={30} md={6} lg={10}>
                             <Paper className={fixedHeightPaper}>
                                 <OfferReach />
                             </Paper>
                         </Grid>
-                        <Grid item xs={12} md={4} lg={3}>
+                        <Grid item xs={12} md={4} lg={6}>
                             <Paper className={classes.pieChart}>
                                 <CatDoughnutChart />
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={5}>
+                            <Paper className={classes.pieChart}>
+                                <LocDoughnutChart />
                             </Paper>
                         </Grid>
                     </Grid>
